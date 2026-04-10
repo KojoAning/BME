@@ -1,4 +1,4 @@
-# BME 1433 — Automated Karyotype Analysis
+# BME 1462 — Automated Karyotype Analysis
 
 A fully automated pipeline for chromosome segmentation, morphometric feature extraction, Denver group classification, and statistical comparison of normal vs. abnormal karyotypes.
 
