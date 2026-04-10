@@ -37,13 +37,9 @@ BME-1433/                    # this repo
 ├── bme.ipynb                # main notebook
 ├── algorithms.py            # segmentation functions
 ├── helper_functions.py      # feature extraction, classification, plotting
-├── Overlap/                 # metaphase spreads for overlap bias analysis (add manually)
-│   └── *.jpg
-└── gt_masks/                # (optional) ground truth masks for DICE validation
-    └── <imagename>_mask.png
-```
 
-The main dataset (`normal/`, `abnormal/`) is hosted on Zenodo (DOI: [10.5281/zenodo.19490325](https://doi.org/10.5281/zenodo.19490325)) and is downloaded automatically when you run the full notebook.
+
+The main dataset (`normal/`, `abnormal/,`gt_masks/`,`overlap/`) is hosted on Zenodo (DOI: [10.5281/zenodo.19490325](https://doi.org/10.5281/zenodo.19490325)) and is downloaded automatically when you run the full notebook.
 
 
 If you want the Zenodo files extracted somewhere other than the default location, change `EXTRACT_DIR` in the first code cell:
@@ -58,7 +54,7 @@ Everything else in the notebook picks that path up automatically.
 
 ## Recommended Setup
 
-Clone or download this repo into a **dedicated empty folder** before running anything. When the notebook runs, it downloads and extracts the dataset (`normal/`, `abnormal/`, `gt_masks/`) directly into whichever directory `EXTRACT_DIR` points to. If that directory is your Downloads folder or Desktop, the dataset folders will be scattered among unrelated files. Keeping everything inside one project folder makes paths cleaner and avoids that.
+Clone or download this repo into a **dedicated empty folder** before running anything. When the notebook runs, it downloads and extracts the dataset (`normal/`, `abnormal/`, `gt_masks/`,`overlap/`) directly into whichever directory `EXTRACT_DIR` points to. If that directory is your Downloads folder or Desktop, the dataset folders will be scattered among unrelated files. Keeping everything inside one project folder makes paths cleaner and avoids that.
 
 A clean setup looks like this:
 
@@ -107,8 +103,7 @@ Ground truth masks are included in the Zenodo download. They will be extracted a
 
 **`ModuleNotFoundError`** — you're missing a package. Run `pip install <package-name>`.
 
-**`FileNotFoundError` on image paths** — update `EXTRACT_DIR` in the Data Loading cell to point to where your images are. For the overlap bias cell, make sure an `Overlap/` folder containing `.jpg` images exists next to the notebook (or update `OVERLAP_DIR` to the correct path).
+**`FileNotFoundError` on image paths** — update `EXTRACT_DIR` in the Data Loading cell to point to where your images are. For the overlap bias cell, make sure an `overlap/` folder containing `.jpg` images exists next to the notebook (or update `OVERLAP_DIR` to the correct path).
 
 **Cells running out of order** — always run from top to bottom. If you restart the kernel, re-run all cells from the beginning (Kernel → Restart & Run All).
 
-**Shape mismatch in DICE validation** — the ground truth mask was saved at a different resolution than the original image. Re-export the mask at the same size as the source image.
