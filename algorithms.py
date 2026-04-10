@@ -214,7 +214,7 @@ def chromosome_mask_with_adaptive_histogram(img_path,
                         clahe_clip_limit=0.03,
                         tophat_disk_size=15,
                         block_size=101,
-                        opening_disk_size=6,
+                        opening_disk_size=7,
                         min_object_size=300,
                         max_object_size=30000,
                         max_eccentricity=0.99999,
@@ -289,11 +289,11 @@ def chromosome_mask_with_adaptive_histogram(img_path,
     mask = labels_ws > 0
 
     labeled_mask = label(mask)
-    # for region in regionprops(labeled_mask):
-    #     if (region.area > max_object_size
-    #             or region.eccentricity > max_eccentricity
-    #             or region.solidity < min_solidity):
-    #         mask[labeled_mask == region.label] = False
+    for region in regionprops(labeled_mask):
+        if (region.area > max_object_size
+                or region.eccentricity > max_eccentricity
+                or region.solidity < min_solidity):
+            mask[labeled_mask == region.label] = False
 
     if plot:
         fig, axes = plt.subplots(1, 2, figsize=(10, 5))

@@ -591,7 +591,7 @@ def extract_centromere_and_bands(df, plot=False):
                 ar    = p_arm / q_arm if q_arm > 0 else np.nan
                 axes[2].bar(['p arm', 'q arm'], [p_arm, q_arm],
                             color=['steelblue', 'coral'])
-                axes[2].set_title(f'Arm ratio p/q = {ar:.2f}')
+                axes[2].set_title(f'Arm ratio q/p = {ar:.2f}')
             else:
                 axes[2].set_title('Arm ratio: centromere not detected')
 
